@@ -6,6 +6,18 @@ function numberToLetter(number) {
     return alphabet[number - 1];
 }
 
+function letterToNumber(letter) {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    const lowercaseLetter = letter.toLowerCase(); // On convertit la lettre en minuscule pour être sûr de gérer les majuscules
+    const index = alphabet.indexOf(lowercaseLetter);
+
+    if (index === -1) {
+        return null; // Retourne null si la lettre n'est pas dans l'alphabet
+    }
+
+    return index + 1;
+}
+
 function init() {
     const table = document.getElementById("chess-table");
 
