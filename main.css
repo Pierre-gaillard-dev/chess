@@ -1,1 +1,18 @@
+#chess-table {
+    border-spacing: 0px;
+    border: 2px solid black;
+}
 
+
+.table_tile {
+    width: 50px;
+    height: 50px;
+}
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
