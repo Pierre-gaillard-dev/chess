@@ -5,14 +5,41 @@
 
 
 .table_tile {
+    width: 54px;
+    height: 54px;
+    padding: 0px;
+    text-align: center;
+    line-height: 100%;
+    position: relative;
+}
+
+.table_tile img {
     width: 50px;
     height: 50px;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+.selected_indicator {
+    width: 50%;
+    aspect-ratio: 1/1;
+    background-color: rgba(0.5, 0.5, 0.5, 0.5);
+    top: 25%;
+    left: 25%;
+    position: absolute;
+    z-index: 10;
+    border-radius: 100%;
+    display: none;
+}
+
+.selected .selected_indicator {
+    display: block;
 }
 
 .black {
-    background-color: black;
+    background-color: #806242;
 }
 
 .white {
-    background-color: white;
+    background-color: #D6B38D;
 }
