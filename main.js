@@ -73,7 +73,7 @@ function unselect_all() {
     let selected_tiles = Array.from(table.getElementsByClassName("selected"));
 
     for (var item of selected_tiles) {
-        console.log(item)
+        //console.log(item)
         item.classList.remove("selected")
     }
 }
@@ -81,7 +81,7 @@ function unselect_all() {
 function clicked_tile(row, column) {
     row = parseInt(row), column = parseInt(column)
 
-    console.log(`case cliquée : ${row}, ${column}`)
+    //console.log(`case cliquée : ${row}, ${column}`)
 
     //déplacement
     if (document.getElementById(`td_${numberToLetter(column)}${row}`).classList.contains("selected")) {
@@ -243,6 +243,30 @@ function clicked_tile(row, column) {
                         break
                     }
                     document.getElementById(`td_${numberToLetter(column+i)}${row-i}`).classList += " selected"
+                }
+                break
+            case "knight":
+                let possible_places = [
+                    {"row": row-2, "column": column-1},
+                    {"row": row-2, "column": column+1},
+                    {"row": row-1, "column": column+2},
+                    {"row": row-1, "column": column-2},
+                    {"row": row+1, "column": column+2},
+                    {"row": row+1, "column": column-2},
+                    {"row": row+2, "column": column-1},
+                    {"row": row+2, "column": column+1}
+                ]
+                for(let i=0; i<possible_places.length; i++) {
+                    let checked_place = possible_places[i];
+                    if (0<checked_place.row && checked_place.row<9 && 0<checked_place.column && checked_place.column<9) {
+                        if (grid[checked_place.row][checked_place.column].type != undefined){
+                            if (grid[checked_place.row][checked_place.column].color !=grid[row][column].color) {
+                                document.getElementById(`td_${numberToLetter(checked_place.column)}${checked_place.row}`).classList += " selected"
+                            }
+                        } else{
+                            document.getElementById(`td_${numberToLetter(checked_place.column)}${checked_place.row}`).classList += " selected"
+                        }
+                    }
                 }
                 break
             case "queen":
